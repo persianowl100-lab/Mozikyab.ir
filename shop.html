@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فروشگاه موزیک‌یاب | هدفون، اسپیکر و اکسسوری</title>
+  <meta name="description" content="فروشگاه اینترنتی موزیک‌یاب: انواع هدفون، اسپیکر بلوتوث، اکسسوری موسیقی و محصولات مرتبط با بهترین قیمت.">
+  <meta name="keywords" content="موزیک, موزیک یاب, فروشگاه موزیک, هدفون, اسپیکر, دانلود آهنگ, شازم">
+  <meta name="author" content="Mozikyab.ir">
+  <link rel="canonical" href="https://mozikyab.ir/shop">
+  <meta property="og:title" content="فروشگاه موزیک‌یاب">
+  <meta property="og:description" content="محصولات صوتی با کیفیت">
+  <meta property="og:url" content="https://mozikyab.ir/shop">
+
+  <!-- فونت وزیر -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css">
+  <!-- فونت‌آسام -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Vazir', 'IRANSans', Tahoma, Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #fff;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ===== HEADER حرفه‌ای (مشابه صفحه اصلی) ===== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      background-color: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 0.8rem 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      filter: blur(12px) brightness(0.5);
+      z-index: -1;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1300px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      letter-spacing: 1px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo a i {
+      font-size: 2.2rem;
+      color: #ffd700;
+      filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+    }
+
+    .logo a:hover {
+      transform: scale(1.02);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-menu a {
+      position: relative;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+    }
+
+    .nav-menu a:not(.social-icon)::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #ffd700, #ffaa00, #ffd700);
+      transition: transform 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .nav-menu a:not(.social-icon):hover::after,
+    .nav-menu a.active::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+
+    .nav-menu a:not(.social-icon):hover {
+      color: #ffd700;
+    }
+
+    .shop-btn {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
+      border: 1.5px solid transparent;
+      border-image: linear-gradient(135deg, #ffd700, #ffaa00);
+      border-image-slice: 1;
+      border-radius: 40px !important;
+      padding: 0.5rem 2rem !important;
+      backdrop-filter: blur(5px);
+      font-weight: 700 !important;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+      transition: all 0.4s ease !important;
+    }
+
+    .shop-btn:hover {
+      background: linear-gradient(135deg, #ffd700, #ffaa00);
+      color: #000 !important;
+      box-shadow: 0 0 30px #ffd700;
+      transform: translateY(-2px);
+    }
+
+    .shop-btn::after {
+      display: none !important;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .social-icon:hover {
+      background: #ffd700;
+      color: #000 !important;
+      transform: scale(1.15) rotate(5deg);
+      border-color: #ffd700;
+      box-shadow: 0 0 20px #ffd700;
+    }
+
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 30px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .mobile-toggle span {
+      width: 100%;
+      height: 3px;
+      background: #fff;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-wrap: wrap;
+      }
+      
+      .nav-menu {
+        order: 3;
+        flex-basis: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.4s ease;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 0;
+        margin-top: 1rem;
+      }
+      
+      .nav-menu.active {
+        max-height: 500px;
+        opacity: 1;
+        padding: 2rem;
+      }
+      
+      .mobile-toggle {
+        display: flex;
+      }
+      
+      .logo a {
+        font-size: 1.6rem;
+      }
+      
+      .shop-btn {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .social-icon {
+        width: 45px;
+        height: 45px;
+      }
+    }
+
+    .header.scrolled {
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(20px);
+      border-bottom-color: rgba(255, 215, 0, 0.3);
+    }
+
+    /* محتوای اصلی فروشگاه */
+    .main {
+      flex: 1;
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      width: 100%;
+    }
+
+    .shop-title {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 2.2rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+
+    .product-card {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 30px rgba(0,0,0,0.4);
+      background: rgba(255,255,255,0.15);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .product-info {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
+    .product-info h3 {
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-info p {
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+
+    .product-price {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #ffd700;
+      margin-bottom: 1rem;
+    }
+
+    .btn-buy {
+      display: inline-block;
+      background: rgba(255, 215, 0, 0.2);
+      border: 1px solid #ffd700;
+      color: #fff;
+      padding: 0.5rem 1.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-buy:hover {
+      background: #ffd700;
+      color: #000;
+    }
+
+    .footer {
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+      padding: 1.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer p {
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html">
+          <i class="fas fa-music"></i> موزیک‌یاب
+        </a>
+      </div>
+      <nav class="nav-menu">
+        <a href="index.html">خانه</a>
+        <a href="shop.html" class="shop-btn active">فروشگاه</a>
+        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-telegram-plane"></i></a>
+      </nav>
+      <button class="mobile-toggle" aria-label="منو">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="main">
+    <h1 class="shop-title">🎧 فروشگاه موزیک‌یاب</h1>
+    <div class="products-grid">
+      <!-- محصول ۱ -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=2070&auto=format&fit=crop" alt="هدفون بی‌سیم مدل X1" class="product-image">
+        <div class="product-info">
+          <h3>هدفون بی‌سیم X1</h3>
+          <p>کیفیت صدای فوق‌العاده با نویز کنسلینگ</p>
+          <div class="product-price">۲,۴۵۰,۰۰۰ تومان</div>
+          <a href="#" class="btn-buy">خرید</a>
+        </div>
+      </div>
+      <!-- محصول ۲ -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1546435770-a3e426bf3a6c?q=80&w=2069&auto=format&fit=crop" alt="اسپیکر بلوتوث قابل حمل" class="product-image">
+        <div class="product-info">
+          <h3>اسپیکر بلوتوث B2</h3>
+          <p>باتری قدرتمند و مقاوم در برابر آب</p>
+          <div class="product-price">۱,۸۹۰,۰۰۰ تومان</div>
+          <a href="#" class="btn-buy">خرید</a>
+        </div>
+      </div>
+      <!-- محصول ۳ -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1487215078519-e21cc028cb29?q=80&w=2070&auto=format&fit=crop" alt="کیف محافظ هدفون" class="product-image">
+        <div class="product-info">
+          <h3>کیف محافظ هدفون</h3>
+          <p>چرم مصنوعی، مناسب برای سفر</p>
+          <div class="product-price">۴۵۰,۰۰۰ تومان</div>
+          <a href="#" class="btn-buy">خرید</a>
+        </div>
+      </div>
+      <!-- محصول ۴ -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1590658006821-04b4008e5711?q=80&w=2070&auto=format&fit=crop" alt="هدفون گیمینگ" class="product-image">
+        <div class="product-info">
+          <h3>هدفون گیمینگ G7</h3>
+          <p>با میکروفون و نورپردازی RGB</p>
+          <div class="product-price">۳,۱۲۰,۰۰۰ تومان</div>
+          <a href="#" class="btn-buy">خرید</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© ۲۰۲۵ موزیک‌یاب. تمامی حقوق محفوظ است.</p>
+    <p>اینستاگرام | تلگرام</p>
+  </footer>
+
+  <script>
+    // منوی همبرگری
+    const toggle = document.querySelector('.mobile-toggle');
+    const nav = document.querySelector('.nav-menu');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+
+    // تغییر ظاهر هدر هنگام اسکرول
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+</body>
+</html>

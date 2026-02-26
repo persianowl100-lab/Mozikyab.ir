@@ -6,7 +6,7 @@ header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 
 // ===== کلید API خود را در اینجا وارد کنید =====
-define('API_KEY', 'hkr6GZGIDCR28R3pr6T9HwB1tb2RHq44pP9uJ9PPU07HDKGeQpTij');
+define('API_KEY', 'hkr6GZGIDCR28R3pr6T9HwBltb2RHq44pP9uJ9PPU07HDKGeQpTiJpj1MVB8rjyF');
 // ============================================
 
 define('BASE_URL', 'https://shazam-api.com/api');

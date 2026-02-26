@@ -343,7 +343,7 @@
       text-align: center;
       border: 1px solid rgba(255,255,255,0.2);
       transition: all 0.3s ease;
-      cursor: default;
+      cursor: pointer; /* اضافه شد تا نشان دهد کلیک‌پذیر است */
     }
 
     .feature-card:hover {
@@ -388,6 +388,7 @@
       </div>
       <nav class="nav-menu">
         <a href="index.html" class="active">خانه</a>
+        <a href="recognize.html">تشخیص آهنگ</a>   <!-- لینک جدید به صفحه تشخیص آهنگ -->
         <a href="shop.html" class="shop-btn">فروشگاه</a>
         <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
         <a href="#" class="social-icon"><i class="fab fa-telegram-plane"></i></a>
@@ -408,17 +409,17 @@
 
     <!-- بخش ویژگی‌ها -->
     <section class="features">
-      <div class="feature-card">
+      <div class="feature-card" onclick="location.href='#';">   <!-- در صورت وجود صفحه دانلود آهنگ، لینک را جایگزین کنید -->
         <i class="fas fa-music"></i>
         <h3>دانلود آهنگ</h3>
         <p>بهترین آهنگ‌های ایرانی و خارجی با لینک مستقیم</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card" onclick="location.href='recognize.html';" role="link" tabindex="0">   <!-- لینک به صفحه تشخیص آهنگ -->
         <i class="fas fa-search"></i>
         <h3>شناسایی موزیک (شازم)</h3>
         <p>با چند ثانیه گوش دادن، آهنگ مورد نظر را پیدا کن</p>
       </div>
-      <div class="feature-card">
+      <div class="feature-card" onclick="location.href='shop.html';">   <!-- لینک به فروشگاه -->
         <i class="fas fa-headphones"></i>
         <h3>فروشگاه محصولات</h3>
         <p>هدفون، اسپیکر و اکسسوری موزیک با تخفیف ویژه</p>

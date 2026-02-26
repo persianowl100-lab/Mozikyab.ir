@@ -3,22 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>موزیک یاب | دانلود آهنگ و شناسایی موزیک با شازم</title>
-  <meta name="description" content="موزیک یاب، مرجع جستجو و دانلود آهنگ و شناسایی موزیک با شازم. جدیدترین آهنگ‌ها، امکانات ویژه و فروشگاه اختصاصی.">
-  <meta name="keywords" content="موزیک, موزیک یاب, دانلود آهنگ, شازم, آهنگ جدید, شناسایی موزیک, Mozikyab">
+  <title>شناسایی موزیک با شازم | موزیک‌یاب</title>
+  <meta name="description" content="با وارد کردن لینک آهنگ، اطلاعات آن را شناسایی کنید. سرویس تشخیص موزیک شازم در موزیک‌یاب.">
+  <meta name="keywords" content="موزیک, موزیک یاب, شازم, شناسایی آهنگ, تشخیص موزیک, دانلود آهنگ">
   <meta name="author" content="Mozikyab.ir">
-  <link rel="canonical" href="https://mozikyab.ir">
-  <meta property="og:title" content="موزیک یاب">
-  <meta property="og:description" content="دانلود آهنگ و شناسایی موزیک با شازم">
-  <meta property="og:url" content="https://mozikyab.ir">
-  <meta name="twitter:card" content="summary_large_image">
+  <link rel="canonical" href="https://mozikyab.ir/recognize">
 
   <!-- فونت وزیر -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css">
-  <!-- فونت‌آسام (آیکون) -->
+  <!-- فونت‌آسام -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
   <style>
+    /* استایل‌ها دقیقاً مانند قبل (برای اختصار در این پاسخ حذف شده، اما باید همان استایل‌های قبلی را کپی کنید) */
     * {
       margin: 0;
       padding: 0;
@@ -42,7 +39,7 @@
       100% { background-position: 0% 50%; }
     }
 
-    /* ===== HEADER حرفه‌ای ===== */
+    /* ===== HEADER (مشابه صفحات قبل) ===== */
     .header {
       position: sticky;
       top: 0;
@@ -79,7 +76,6 @@
       z-index: 2;
     }
 
-    /* لوگو */
     .logo a {
       display: flex;
       align-items: center;
@@ -103,7 +99,6 @@
       transform: scale(1.02);
     }
 
-    /* منو */
     .nav-menu {
       display: flex;
       align-items: center;
@@ -142,7 +137,6 @@
       color: #ffd700;
     }
 
-    /* دکمه فروشگاه */
     .shop-btn {
       background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
       border: 1.5px solid transparent;
@@ -164,10 +158,9 @@
     }
 
     .shop-btn::after {
-      display: none !important; /* حذف خط زیر برای این دکمه */
+      display: none !important;
     }
 
-    /* آیکون‌های اجتماعی */
     .social-icon {
       display: inline-flex;
       align-items: center;
@@ -190,7 +183,6 @@
       box-shadow: 0 0 20px #ffd700;
     }
 
-    /* دکمه همبرگری (موبایل) */
     .mobile-toggle {
       display: none;
       flex-direction: column;
@@ -211,12 +203,10 @@
       transition: all 0.3s ease;
     }
 
-    /* ریسپانسیو */
     @media (max-width: 768px) {
       .header-container {
         flex-wrap: wrap;
       }
-      
       .nav-menu {
         order: 3;
         flex-basis: 100%;
@@ -233,148 +223,209 @@
         padding: 0;
         margin-top: 1rem;
       }
-      
       .nav-menu.active {
         max-height: 500px;
         opacity: 1;
         padding: 2rem;
       }
-      
       .mobile-toggle {
         display: flex;
       }
-      
       .logo a {
         font-size: 1.6rem;
       }
-      
       .shop-btn {
         width: 100%;
         text-align: center;
       }
-      
       .social-icon {
         width: 45px;
         height: 45px;
       }
     }
 
-    /* اسکرول هدر (کمی شفافیت بیشتر هنگام اسکرول) */
     .header.scrolled {
       background-color: rgba(0, 0, 0, 0.6);
       backdrop-filter: blur(20px);
       border-bottom-color: rgba(255, 215, 0, 0.3);
     }
 
-    /* محتوای اصلی */
+    /* ===== استایل‌های صفحه تشخیص ===== */
     .main {
       flex: 1;
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 3rem auto;
       padding: 0 2rem;
       width: 100%;
     }
 
-    /* بنر تلگرام */
-    .telegram-banner {
-      background: linear-gradient(135deg, rgba(0, 136, 204, 0.9), rgba(0, 102, 153, 0.9));
+    .recognize-box {
+      background: rgba(255, 255, 255, 0.1);
       backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 2.5rem;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      margin: 2rem 0;
+      border-radius: 30px;
+      padding: 3rem 2rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
       border: 1px solid rgba(255,255,255,0.2);
-      transition: transform 0.3s ease;
     }
 
-    .telegram-banner:hover {
-      transform: translateY(-5px);
-    }
-
-    .telegram-banner h2 {
-      font-size: 2.2rem;
+    .recognize-box h1 {
+      text-align: center;
+      font-size: 2.5rem;
       margin-bottom: 1rem;
     }
 
-    .telegram-banner p {
+    .recognize-box p {
+      text-align: center;
       font-size: 1.2rem;
       margin-bottom: 2rem;
       opacity: 0.9;
     }
 
-    .btn-telegram {
-      display: inline-block;
-      background: #fff;
-      color: #0088cc;
-      padding: 0.8rem 2.5rem;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: bold;
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .input-group label {
       font-size: 1.2rem;
-      transition: all 0.3s ease;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      font-weight: 600;
     }
 
-    .btn-telegram:hover {
-      background: #0088cc;
+    .input-group input {
+      padding: 1rem 1.5rem;
+      border-radius: 60px;
+      border: none;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(5px);
       color: #fff;
-      transform: scale(1.05);
-      box-shadow: 0 8px 25px rgba(0,136,204,0.5);
-    }
-
-    .btn-telegram i {
-      margin-left: 0.5rem;
-    }
-
-    /* کارت‌های ویژگی‌ها */
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 4rem;
-    }
-
-    .feature-card {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      border-radius: 20px;
-      padding: 2rem;
-      text-align: center;
-      border: 1px solid rgba(255,255,255,0.2);
+      font-size: 1.1rem;
+      border: 1px solid rgba(255,255,255,0.3);
       transition: all 0.3s ease;
-      cursor: pointer; /* اضافه شد تا نشان دهد کلیک‌پذیر است */
     }
 
-    .feature-card:hover {
-      transform: translateY(-10px);
-      background: rgba(255, 255, 255, 0.2);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    .input-group input:focus {
+      outline: none;
+      border-color: #ffd700;
+      box-shadow: 0 0 20px rgba(255,215,0,0.5);
+      background: rgba(255,255,255,0.25);
     }
 
-    .feature-card i {
-      font-size: 3rem;
+    .input-group input::placeholder {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #ffd700, #ffaa00);
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(255,215,0,0.4);
+      border: 1px solid rgba(255,255,255,0.3);
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .btn-submit:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px #ffd700;
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .loading {
+      text-align: center;
+      margin: 2rem 0;
+      font-size: 1.3rem;
+      display: none;
+    }
+
+    .loading i {
+      margin-left: 0.5rem;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .result-card {
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 2rem;
+      margin-top: 2rem;
+      border: 1px solid #ffd700;
+      display: none;
+    }
+
+    .result-card h2 {
+      font-size: 2rem;
       margin-bottom: 1rem;
       color: #ffd700;
     }
 
-    .feature-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
+    .track-info {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
     }
 
-    /* فوتر */
+    .track-cover {
+      width: 150px;
+      height: 150px;
+      border-radius: 20px;
+      background: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #ffd700;
+    }
+
+    .track-details {
+      flex: 1;
+    }
+
+    .track-details p {
+      margin: 0.8rem 0;
+      font-size: 1.2rem;
+    }
+
+    .track-details strong {
+      color: #ffd700;
+    }
+
+    .error-message {
+      background: rgba(255,0,0,0.2);
+      border: 1px solid #ff4444;
+      border-radius: 20px;
+      padding: 1rem;
+      text-align: center;
+      color: #fff;
+      margin-top: 1rem;
+      display: none;
+    }
+
     .footer {
       background: rgba(0, 0, 0, 0.3);
       backdrop-filter: blur(5px);
       padding: 1.5rem;
       text-align: center;
       border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    .footer p {
-      font-size: 0.9rem;
-      opacity: 0.8;
     }
   </style>
 </head>
@@ -387,8 +438,8 @@
         </a>
       </div>
       <nav class="nav-menu">
-        <a href="index.html" class="active">خانه</a>
-        <a href="recognize.html">تشخیص آهنگ</a>   <!-- لینک جدید به صفحه تشخیص آهنگ -->
+        <a href="index.html">خانه</a>
+        <a href="recognize.html" class="active">تشخیص آهنگ</a>
         <a href="shop.html" class="shop-btn">فروشگاه</a>
         <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
         <a href="#" class="social-icon"><i class="fab fa-telegram-plane"></i></a>
@@ -400,31 +451,35 @@
   </header>
 
   <main class="main">
-    <!-- بنر تلگرام -->
-    <section class="telegram-banner">
-      <h2>🎵 به کانال تلگرام ما بپیوندید!</h2>
-      <p>جدیدترین آهنگ‌ها، شناسایی موزیک با شازم و تخفیف‌های ویژه فروشگاه را در کانال تلگرام ما دنبال کنید.</p>
-      <a href="#" class="btn-telegram"><i class="fab fa-telegram"></i> عضویت در کانال تلگرام</a>
-    </section>
+    <div class="recognize-box">
+      <h1>🎵 شناسایی آهنگ با شازم</h1>
+      <p>لینک فایل صوتی یا لینک TikTok / SoundCloud را وارد کنید تا اطلاعات آهنگ را دریافت کنید.</p>
+      
+      <div class="input-group">
+        <label for="audioUrl">آدرس لینک:</label>
+        <input type="url" id="audioUrl" placeholder="https://example.com/song.mp3 یا لینک TikTok/SoundCloud">
+      </div>
+      
+      <button class="btn-submit" id="submitBtn">شناسایی آهنگ</button>
 
-    <!-- بخش ویژگی‌ها -->
-    <section class="features">
-      <div class="feature-card" onclick="location.href='#';">   <!-- در صورت وجود صفحه دانلود آهنگ، لینک را جایگزین کنید -->
-        <i class="fas fa-music"></i>
-        <h3>دانلود آهنگ</h3>
-        <p>بهترین آهنگ‌های ایرانی و خارجی با لینک مستقیم</p>
+      <div class="loading" id="loading">
+        <i class="fas fa-spinner"></i> در حال پردازش، لطفاً صبر کنید...
       </div>
-      <div class="feature-card" onclick="location.href='recognize.html';" role="link" tabindex="0">   <!-- لینک به صفحه تشخیص آهنگ -->
-        <i class="fas fa-search"></i>
-        <h3>شناسایی موزیک (شازم)</h3>
-        <p>با چند ثانیه گوش دادن، آهنگ مورد نظر را پیدا کن</p>
+
+      <div class="result-card" id="resultCard">
+        <h2>نتیجه شناسایی</h2>
+        <div class="track-info">
+          <div class="track-cover" id="trackCover">
+            <i class="fas fa-music"></i>
+          </div>
+          <div class="track-details" id="trackDetails">
+            <!-- اطلاعات توسط JS پر می‌شود -->
+          </div>
+        </div>
       </div>
-      <div class="feature-card" onclick="location.href='shop.html';">   <!-- لینک به فروشگاه -->
-        <i class="fas fa-headphones"></i>
-        <h3>فروشگاه محصولات</h3>
-        <p>هدفون، اسپیکر و اکسسوری موزیک با تخفیف ویژه</p>
-      </div>
-    </section>
+
+      <div class="error-message" id="errorMsg"></div>
+    </div>
   </main>
 
   <footer class="footer">
@@ -447,6 +502,148 @@
         header.classList.add('scrolled');
       } else {
         header.classList.remove('scrolled');
+      }
+    });
+
+    // ----- تشخیص آهنگ -----
+    const submitBtn = document.getElementById('submitBtn');
+    const urlInput = document.getElementById('audioUrl');
+    const loadingDiv = document.getElementById('loading');
+    const resultCard = document.getElementById('resultCard');
+    const trackDetails = document.getElementById('trackDetails');
+    const trackCover = document.getElementById('trackCover');
+    const errorMsg = document.getElementById('errorMsg');
+
+    // تابع برای نمایش خطا
+    function showError(message) {
+      errorMsg.style.display = 'block';
+      errorMsg.textContent = message;
+      loadingDiv.style.display = 'none';
+    }
+
+    // تابع برای پاک کردن خطا
+    function clearError() {
+      errorMsg.style.display = 'none';
+    }
+
+    // تابع برای نمایش نتیجه
+    function displayResult(data) {
+      if (data.results && data.results.length > 0) {
+        const track = data.results[0].track;
+        let html = '';
+        if (track.title) html += `<p><strong>نام آهنگ:</strong> ${track.title}</p>`;
+        if (track.subtitle) html += `<p><strong>خواننده:</strong> ${track.subtitle}</p>`;
+        if (track.album) html += `<p><strong>آلبوم:</strong> ${track.album}</p>`;
+        if (track.genre) html += `<p><strong>سبک:</strong> ${track.genre}</p>`;
+        if (track.year) html += `<p><strong>سال:</strong> ${track.year}</p>`;
+        if (track.label) html += `<p><strong>ناشر:</strong> ${track.label}</p>`;
+        if (track.url) html += `<p><strong>لینک در شازم:</strong> <a href="${track.url}" target="_blank" style="color:#ffd700;">مشاهده</a></p>`;
+        
+        if (track.images && track.images.coverart) {
+          trackCover.innerHTML = `<img src="${track.images.coverart}" alt="cover" style="width:100%; height:100%; border-radius:20px;">`;
+        } else {
+          trackCover.innerHTML = '<i class="fas fa-music"></i>';
+        }
+        
+        trackDetails.innerHTML = html;
+        resultCard.style.display = 'block';
+      } else {
+        showError('نتیجه‌ای یافت نشد.');
+      }
+    }
+
+    // تابع برای polling نتیجه
+    async function pollResult(uuid) {
+      const maxAttempts = 15;
+      let attempts = 0;
+      
+      while (attempts < maxAttempts) {
+        attempts++;
+        try {
+          const response = await fetch(`/api-proxy.php/results/${uuid}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          
+          // بررسی اینکه پاسخ JSON است
+          const contentType = response.headers.get('content-type');
+          if (!contentType || !contentType.includes('application/json')) {
+            const text = await response.text();
+            console.error('Received non-JSON response:', text);
+            throw new Error('پاسخ سرور نامعتبر است (احتمالاً خطای 404)');
+          }
+          
+          const data = await response.json();
+          
+          if (data.status === 'completed') {
+            loadingDiv.style.display = 'none';
+            displayResult(data);
+            return;
+          } else if (data.status === 'failed') {
+            showError('شناسایی ناموفق بود. لطفاً دوباره تلاش کنید.');
+            return;
+          }
+          // در غیر این صورت همچنان processing
+        } catch (err) {
+          console.error('Polling error:', err);
+          showError('خطا در دریافت نتیجه: ' + err.message);
+          return;
+        }
+        
+        await new Promise(resolve => setTimeout(resolve, 3000));
+      }
+      
+      showError('زمان شناسایی به پایان رسید. لطفاً دوباره تلاش کنید.');
+    }
+
+    // رویداد کلیک دکمه
+    submitBtn.addEventListener('click', async () => {
+      const url = urlInput.value.trim();
+      if (!url) {
+        showError('لطفاً یک لینک وارد کنید.');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      loadingDiv.style.display = 'block';
+      resultCard.style.display = 'none';
+      clearError();
+
+      try {
+        const response = await fetch('/api-proxy.php/recognize', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ url: url })
+        });
+
+        // بررسی اینکه پاسخ JSON است
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+          const text = await response.text();
+          console.error('Received non-JSON response:', text);
+          throw new Error('پاسخ سرور نامعتبر است (احتمالاً خطای 404)');
+        }
+
+        const data = await response.json();
+        
+        if (!response.ok) {
+          throw new Error(data.error || 'خطا در ارتباط با سرور');
+        }
+        
+        if (data.uuid) {
+          await pollResult(data.uuid);
+        } else {
+          showError('پاسخ نامعتبر از سرور.');
+        }
+      } catch (err) {
+        console.error('Error:', err);
+        showError(err.message || 'خطایی رخ داد. لطفاً دوباره تلاش کنید.');
+      } finally {
+        submitBtn.disabled = false;
       }
     });
   </script>

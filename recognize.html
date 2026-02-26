@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>شناسایی موزیک با شازم | موزیک‌یاب</title>
+  <meta name="description" content="با وارد کردن لینک آهنگ، اطلاعات آن را شناسایی کنید. سرویس تشخیص موزیک شازم در موزیک‌یاب.">
+  <meta name="keywords" content="موزیک, موزیک یاب, شازم, شناسایی آهنگ, تشخیص موزیک, دانلود آهنگ">
+  <meta name="author" content="Mozikyab.ir">
+  <link rel="canonical" href="https://mozikyab.ir/recognize">
+
+  <!-- فونت وزیر -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazir-font@v30.1.0/dist/font-face.css">
+  <!-- فونت‌آسام -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Vazir', 'IRANSans', Tahoma, Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      color: #fff;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ===== HEADER (مشابه صفحات قبل) ===== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      background-color: rgba(0, 0, 0, 0.3);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 0.8rem 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=2070&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+      filter: blur(12px) brightness(0.5);
+      z-index: -1;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1300px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .logo a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fff;
+      text-decoration: none;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+      letter-spacing: 1px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo a i {
+      font-size: 2.2rem;
+      color: #ffd700;
+      filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.6));
+    }
+
+    .logo a:hover {
+      transform: scale(1.02);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .nav-menu a {
+      position: relative;
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1.1rem;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+    }
+
+    .nav-menu a:not(.social-icon)::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%) scaleX(0);
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, #ffd700, #ffaa00, #ffd700);
+      transition: transform 0.3s ease;
+      border-radius: 2px;
+    }
+
+    .nav-menu a:not(.social-icon):hover::after,
+    .nav-menu a.active::after {
+      transform: translateX(-50%) scaleX(1);
+    }
+
+    .nav-menu a:not(.social-icon):hover {
+      color: #ffd700;
+    }
+
+    .shop-btn {
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(255, 165, 0, 0.2));
+      border: 1.5px solid transparent;
+      border-image: linear-gradient(135deg, #ffd700, #ffaa00);
+      border-image-slice: 1;
+      border-radius: 40px !important;
+      padding: 0.5rem 2rem !important;
+      backdrop-filter: blur(5px);
+      font-weight: 700 !important;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+      transition: all 0.4s ease !important;
+    }
+
+    .shop-btn:hover {
+      background: linear-gradient(135deg, #ffd700, #ffaa00);
+      color: #000 !important;
+      box-shadow: 0 0 30px #ffd700;
+      transform: translateY(-2px);
+    }
+
+    .shop-btn::after {
+      display: none !important;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(5px);
+      font-size: 1.3rem;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .social-icon:hover {
+      background: #ffd700;
+      color: #000 !important;
+      transform: scale(1.15) rotate(5deg);
+      border-color: #ffd700;
+      box-shadow: 0 0 20px #ffd700;
+    }
+
+    .mobile-toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 30px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .mobile-toggle span {
+      width: 100%;
+      height: 3px;
+      background: #fff;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-wrap: wrap;
+      }
+      .nav-menu {
+        order: 3;
+        flex-basis: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: all 0.4s ease;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        padding: 0;
+        margin-top: 1rem;
+      }
+      .nav-menu.active {
+        max-height: 500px;
+        opacity: 1;
+        padding: 2rem;
+      }
+      .mobile-toggle {
+        display: flex;
+      }
+      .logo a {
+        font-size: 1.6rem;
+      }
+      .shop-btn {
+        width: 100%;
+        text-align: center;
+      }
+      .social-icon {
+        width: 45px;
+        height: 45px;
+      }
+    }
+
+    .header.scrolled {
+      background-color: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(20px);
+      border-bottom-color: rgba(255, 215, 0, 0.3);
+    }
+
+    /* ===== استایل‌های صفحه تشخیص ===== */
+    .main {
+      flex: 1;
+      max-width: 1000px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      width: 100%;
+    }
+
+    .recognize-box {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 3rem 2rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .recognize-box h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .recognize-box p {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      max-width: 700px;
+      margin: 0 auto 2rem;
+    }
+
+    .input-group label {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .input-group input {
+      padding: 1rem 1.5rem;
+      border-radius: 60px;
+      border: none;
+      background: rgba(255,255,255,0.2);
+      backdrop-filter: blur(5px);
+      color: #fff;
+      font-size: 1.1rem;
+      border: 1px solid rgba(255,255,255,0.3);
+      transition: all 0.3s ease;
+    }
+
+    .input-group input:focus {
+      outline: none;
+      border-color: #ffd700;
+      box-shadow: 0 0 20px rgba(255,215,0,0.5);
+      background: rgba(255,255,255,0.25);
+    }
+
+    .input-group input::placeholder {
+      color: rgba(255,255,255,0.6);
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #ffd700, #ffaa00);
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #000;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 5px 20px rgba(255,215,0,0.4);
+      border: 1px solid rgba(255,255,255,0.3);
+      width: fit-content;
+      margin: 0 auto;
+    }
+
+    .btn-submit:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 30px #ffd700;
+    }
+
+    .btn-submit:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .loading {
+      text-align: center;
+      margin: 2rem 0;
+      font-size: 1.3rem;
+      display: none;
+    }
+
+    .loading i {
+      margin-left: 0.5rem;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .result-card {
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(10px);
+      border-radius: 30px;
+      padding: 2rem;
+      margin-top: 2rem;
+      border: 1px solid #ffd700;
+      display: none;
+    }
+
+    .result-card h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #ffd700;
+    }
+
+    .track-info {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .track-cover {
+      width: 150px;
+      height: 150px;
+      border-radius: 20px;
+      background: #333;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #ffd700;
+    }
+
+    .track-details {
+      flex: 1;
+    }
+
+    .track-details p {
+      margin: 0.8rem 0;
+      font-size: 1.2rem;
+    }
+
+    .track-details strong {
+      color: #ffd700;
+    }
+
+    .error-message {
+      background: rgba(255,0,0,0.2);
+      border: 1px solid #ff4444;
+      border-radius: 20px;
+      padding: 1rem;
+      text-align: center;
+      color: #fff;
+      margin-top: 1rem;
+      display: none;
+    }
+
+    .footer {
+      background: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(5px);
+      padding: 1.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-container">
+      <div class="logo">
+        <a href="index.html">
+          <i class="fas fa-music"></i> موزیک‌یاب
+        </a>
+      </div>
+      <nav class="nav-menu">
+        <a href="index.html">خانه</a>
+        <a href="recognize.html" class="active">تشخیص آهنگ</a>
+        <a href="shop.html" class="shop-btn">فروشگاه</a>
+        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="social-icon"><i class="fab fa-telegram-plane"></i></a>
+      </nav>
+      <button class="mobile-toggle" aria-label="منو">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="recognize-box">
+      <h1>🎵 شناسایی آهنگ با شازم</h1>
+      <p>لینک فایل صوتی یا لینک TikTok / SoundCloud را وارد کنید تا اطلاعات آهنگ را دریافت کنید.</p>
+      
+      <div class="input-group">
+        <label for="audioUrl">آدرس لینک:</label>
+        <input type="url" id="audioUrl" placeholder="https://example.com/song.mp3 یا لینک TikTok/SoundCloud">
+      </div>
+      
+      <button class="btn-submit" id="submitBtn">شناسایی آهنگ</button>
+
+      <div class="loading" id="loading">
+        <i class="fas fa-spinner"></i> در حال پردازش، لطفاً صبر کنید...
+      </div>
+
+      <div class="result-card" id="resultCard">
+        <h2>نتیجه شناسایی</h2>
+        <div class="track-info">
+          <div class="track-cover" id="trackCover">
+            <i class="fas fa-music"></i>
+          </div>
+          <div class="track-details" id="trackDetails">
+            <!-- اطلاعات توسط JS پر می‌شود -->
+          </div>
+        </div>
+      </div>
+
+      <div class="error-message" id="errorMsg"></div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© ۲۰۲۵ موزیک‌یاب. تمامی حقوق محفوظ است.</p>
+    <p>اینستاگرام | تلگرام</p>
+  </footer>
+
+  <script>
+    // منوی همبرگری
+    const toggle = document.querySelector('.mobile-toggle');
+    const nav = document.querySelector('.nav-menu');
+    toggle.addEventListener('click', () => {
+      nav.classList.toggle('active');
+    });
+
+    // تغییر ظاهر هدر هنگام اسکرول
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('.header');
+      if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // ----- تشخیص آهنگ -----
+    const submitBtn = document.getElementById('submitBtn');
+    const urlInput = document.getElementById('audioUrl');
+    const loadingDiv = document.getElementById('loading');
+    const resultCard = document.getElementById('resultCard');
+    const trackDetails = document.getElementById('trackDetails');
+    const trackCover = document.getElementById('trackCover');
+    const errorMsg = document.getElementById('errorMsg');
+
+    // تابع برای نمایش خطا
+    function showError(message) {
+      errorMsg.style.display = 'block';
+      errorMsg.textContent = message;
+      loadingDiv.style.display = 'none';
+    }
+
+    // تابع برای پاک کردن خطا
+    function clearError() {
+      errorMsg.style.display = 'none';
+    }
+
+    // تابع برای نمایش نتیجه
+    function displayResult(data) {
+      // بر اساس مستندات، results آرایه‌ای از اشیاء با track است
+      if (data.results && data.results.length > 0) {
+        const track = data.results[0].track;
+        let html = '';
+        if (track.title) html += `<p><strong>نام آهنگ:</strong> ${track.title}</p>`;
+        if (track.subtitle) html += `<p><strong>خواننده:</strong> ${track.subtitle}</p>`;
+        if (track.album) html += `<p><strong>آلبوم:</strong> ${track.album}</p>`;
+        if (track.genre) html += `<p><strong>سبک:</strong> ${track.genre}</p>`;
+        if (track.year) html += `<p><strong>سال:</strong> ${track.year}</p>`;
+        if (track.label) html += `<p><strong>ناشر:</strong> ${track.label}</p>`;
+        if (track.url) html += `<p><strong>لینک در شازم:</strong> <a href="${track.url}" target="_blank" style="color:#ffd700;">مشاهده</a></p>`;
+        
+        // اگر تصویر کاور وجود داشت
+        if (track.images && track.images.coverart) {
+          trackCover.innerHTML = `<img src="${track.images.coverart}" alt="cover" style="width:100%; height:100%; border-radius:20px;">`;
+        } else {
+          trackCover.innerHTML = '<i class="fas fa-music"></i>';
+        }
+        
+        trackDetails.innerHTML = html;
+        resultCard.style.display = 'block';
+      } else {
+        showError('نتیجه‌ای یافت نشد.');
+      }
+    }
+
+    // تابع برای polling نتیجه
+    async function pollResult(uuid) {
+      const maxAttempts = 15; // حداکثر 15 بار تلاش (هر 3 ثانیه = 45 ثانیه)
+      let attempts = 0;
+      
+      while (attempts < maxAttempts) {
+        attempts++;
+        try {
+          const response = await fetch(`/api/results/${uuid}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          const data = await response.json();
+          
+          if (data.status === 'completed') {
+            loadingDiv.style.display = 'none';
+            displayResult(data);
+            return;
+          } else if (data.status === 'failed') {
+            showError('شناسایی ناموفق بود. لطفاً دوباره تلاش کنید.');
+            return;
+          }
+          // در غیر این صورت همچنان processing
+        } catch (err) {
+          console.error('Polling error:', err);
+          showError('خطا در دریافت نتیجه. لطفاً دوباره تلاش کنید.');
+          return;
+        }
+        
+        // صبر 3 ثانیه قبل از درخواست بعدی
+        await new Promise(resolve => setTimeout(resolve, 3000));
+      }
+      
+      showError('زمان شناسایی به پایان رسید. لطفاً دوباره تلاش کنید.');
+    }
+
+    // رویداد کلیک دکمه
+    submitBtn.addEventListener('click', async () => {
+      const url = urlInput.value.trim();
+      if (!url) {
+        showError('لطفاً یک لینک وارد کنید.');
+        return;
+      }
+
+      // غیرفعال کردن دکمه و نمایش لودینگ
+      submitBtn.disabled = true;
+      loadingDiv.style.display = 'block';
+      resultCard.style.display = 'none';
+      clearError();
+
+      try {
+        // ارسال درخواست به پروکسی /api/recognize (که کلید API را اضافه می‌کند)
+        const response = await fetch('/api/recognize', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ url: url })
+        });
+
+        if (!response.ok) {
+          const errData = await response.json();
+          throw new Error(errData.error || 'خطا در ارتباط با سرور');
+        }
+
+        const data = await response.json();
+        
+        if (data.uuid) {
+          // دریافت UUID و شروع polling
+          await pollResult(data.uuid);
+        } else {
+          showError('پاسخ نامعتبر از سرور.');
+        }
+      } catch (err) {
+        console.error('Error:', err);
+        showError(err.message || 'خطایی رخ داد. لطفاً دوباره تلاش کنید.');
+      } finally {
+        submitBtn.disabled = false;
+        // اگر polling انجام شد، loading در pollResult مخفی می‌شود
+      }
+    });
+  </script>
+</body>
+</html>
